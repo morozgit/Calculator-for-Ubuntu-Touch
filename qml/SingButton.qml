@@ -1,8 +1,9 @@
 import QtQuick 2.0
+import QtQuick.Window 2.2
 
 Item {
     id: root
-    property int size: units.gu(10)
+    property int size: Screen.orientation == 1 ? units.gu(9) : units.gu(8)
     property color color: "black"
     property alias operation: singbutton_text.text
 
@@ -34,8 +35,9 @@ Item {
         {
             id:mouseArea
             anchors.fill: parent
-            onClicked: {python.call("example.speak",[singbutton_text.text],function (num){print(num)
-            main_display_text.text = main_display_text.text + singbutton_text.text
+            onClicked: {python.call("example.Sing",[singbutton_text.text],function (num){
+                print(num)
+                main_display_text.text = main_display_text.text + singbutton_text.text
             })}
 
 
@@ -43,4 +45,5 @@ Item {
 
 
     }
+
 }

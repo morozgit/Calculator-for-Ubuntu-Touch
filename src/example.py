@@ -14,24 +14,48 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 from math import *
+import logging
+
 
 def calcbutton(text):
-    return text
+    num = float(text)
+    return num
 
 def delete(text):
     remaining_string = text[:-1]
     return remaining_string
 
-def percent(text):
-    return float(text)*0.01
+def factorial(text):
+    factorial = 1
+    for i in range(2,int(text)+1):
+        factorial = factorial * i
+    return factorial
 
 def NumRoot(text):
-    return sqrt(float(text))
+    res = sqrt(float(text))
+    #logging.debug(text)
+    return float('{:.10f}'.format(res))
+
+def Sing(text):
+    sing = text
+    return(sing)
+
+def PlusMinus(text):
+    num = float(text)
+    return num * (- 1)
+
+def Power(text):
+    num = float(text)
+    return num
 
 
-def calculate(expression):
-    print(expression)
-    try:
-        return (True, eval(expression, globals()))
-    except:
-        return (False, expression)
+def calculate(text):
+    print(text)
+    code = compile(text, "<string>", "eval")
+    res = eval(code)
+    return float('{:.4f}'.format(res))
+#    try:
+#        res  = (True, eval(code))
+#        return float('{:.4f}'.format(res[1]))
+#    except:
+#        return "error"

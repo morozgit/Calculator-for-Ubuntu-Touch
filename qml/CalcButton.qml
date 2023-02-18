@@ -1,9 +1,11 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.3
+import QtQuick.Window 2.2
+
 
 Item {
     id:root
-    property int size: units.gu(10)
+    property int size: Screen.orientation == 1 ? units.gu(9) : units.gu(8)
     property color color: "black"
     property alias text: button_text.text
     property alias  operation: button_text.text
@@ -40,7 +42,9 @@ Item {
         anchors.fill: parent
         onClicked: {python.call("example.calcbutton",[button_text.text],function (num){
                     print(num)
+
                     main_display_text.text = main_display_text.text + button_text.text
+
         })}
     }
 }

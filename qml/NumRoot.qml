@@ -1,9 +1,10 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.3
+import QtQuick.Window 2.2
 
 Item {
     id: root
-    property int size: units.gu(10)
+    property int size: Screen.orientation == 1 ? units.gu(9) : units.gu(8)
     property color color: "black"
     property alias operation: num_root_button_text.text
 
@@ -37,9 +38,12 @@ Item {
             anchors.fill: parent
             onClicked: python.call("example.NumRoot", [main_display_text.text], function ( result )
             {
-                print(result)
-               //secondary_display_text.text = ""
-               main_display_text.text = result
+                console.log(num_root_button_text.text)
+
+               //main_display_text.text = main_display_text.text + num_root_button_text.text
+                main_display_text.text = Screen.primaryOrientation
+                //secondary_display_text1.text = Screen.desktopAvailableHeight
+
             })}
 
 
